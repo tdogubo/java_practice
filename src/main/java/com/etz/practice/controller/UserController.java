@@ -3,13 +3,14 @@ package com.etz.practice.controller;
 import com.etz.practice.model.UserModel;
 import com.etz.practice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/users")
 public class UserController {
     private final UserService userService;
 
@@ -18,7 +19,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/users")
+    @GetMapping
     public List<UserModel> getUsers(){
         return userService.getUsers();
     }
@@ -26,6 +27,11 @@ public class UserController {
     @PostMapping
     public void registerNewUser(@RequestBody UserModel user){
         userService.addNewUser(user);
+    }
+
+    @GetMapping("/designation")
+    public ResponseEntity<List<UserModel>> userByDesignation(@RequestParam String designation){
+        return userService.userByDesignation(designation);
     }
 
     @DeleteMapping(path = "{userId}")

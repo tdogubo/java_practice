@@ -24,13 +24,15 @@ public class UserModel {
     private String lastName;
     private String email;
     private String course;
+    private String designation;
 
-    public UserModel(String firstName, String lastName, String email,String course) {
+    public UserModel(String firstName, String lastName, String email,String course, String designation) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-            this.course = course;
+        this.course = course;
+        this.designation = designation;
         }
 
     public UserModel() {
@@ -45,6 +47,7 @@ public class UserModel {
                     ", email='" + email + '\'' +
                     ", lastName='" + lastName + '\'' +
                     ", course='" + course + '\'' +
+                    ", designation='" + designation + '\'' +
                     '}';
         }
     }

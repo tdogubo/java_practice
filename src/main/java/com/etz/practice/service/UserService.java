@@ -2,7 +2,10 @@ package com.etz.practice.service;
 
 import com.etz.practice.model.UserModel;
 import com.etz.practice.repository.UserRepository;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,10 +55,10 @@ public class UserService {
                 Objects.equals(user.get().getLastName(), lastName)){
         }
         user.get().setLastName(lastName);
+    }
 
-
-
-
-
+    public ResponseEntity<List<UserModel>> userByDesignation(String designation) {
+       ResponseEntity<List<UserModel>>user= new ResponseEntity<>(userRepository.findUserModelByDesignation(designation), HttpStatus.OK);
+       return user;
     }
 }
